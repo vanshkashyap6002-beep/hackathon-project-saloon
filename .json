@@ -1,0 +1,13 @@
+[
+  {
+    "id": "rahul-sharma",
+    "name": "Rahul Sharma",
+    "role": "Senior Bridal Architect",
+    "specialization": "Bridal Makeup Artistry",
+    "region": "South Delhi",
+    "price": 15000,
+    "metrics": { "rating": 4.9, "brides": 480 },
+    "classTag": "p1",
+    "icon": "💄"
+  }
+]
