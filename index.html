@@ -3,37 +3,267 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Headlock AI — Delhi's Luxury Bridal Beauty Booking Platform</title>
+<title>Headlock AI — Delhi's Premier Sovereign Bridal Network</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<style>
+    /* ==========================================================================
+   MOBILE NAVIGATION AND OPTIMIZED
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Tighten nav padding and force elements to stay on one single row line */
+  nav {
+    padding: 12px 16px !important;
+    background: rgba(10, 10, 10, 0.98) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
 
+  /* Make logo highly responsive so it backs away on small widths */
+  .nav-logo {
+    font-size: clamp(16px, 4.5vw, 22px) !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Keep button perfectly visible but scale its size safely for touch screens */
+  nav .nav-cta {
+    display: inline-block !important;
+    padding: 6px 14px !important;
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Safeguard: push content down to guarantee it clears the sticky nav */
+  .hero {
+    padding: 130px 20px 50px !important;
+    min-height: auto !important;
+  }
+
+  /* Responsive title typography to adapt down gracefully on 320px screens */
+  .hero-title {
+    font-size: clamp(34px, 9vw, 52px) !important;
+    line-height: 1.05 !important;
+    margin-top: 15px !important;
+  }
+
+  .hero-sub {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    margin-top: 15px !important;
+  }
+  
+  .hero-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 30px !important;
+    width: 100% !important;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 14px 16px !important;
+  }
+}
+/* ==========================================================================
+   CINEMATIC LUXURY WELCOME ENGINE (2.5s HIGH-PERFORMANCE INTRO)
+   ========================================================================== */
+
+#luxury-welcome-shutter {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 40%, #161616 0%, #0a0a0a 100%);
+  z-index: 99999; /* Higher than sticky navigation and admin nodes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  pointer-events: all;
+  /* Smooth scale-out decay handshake matching premium automotive portals */
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Subtle underlying luxury background gold glow particle */
+#luxury-welcome-shutter::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.welcome-brand-container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 0 40px;
+}
+
+/* Luxury Brand Reveal with Letter Spacing Expansion */
+.welcome-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 90px);
+  color: var(--white);
+  letter-spacing: 12px;
+  line-height: 1;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  opacity: 0;
+  /* Cinematic execution loop */
+  animation: logoCinematicReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  will-change: transform, opacity, letter-spacing;
+}
+
+.welcome-logo span {
+  color: var(--gold);
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtle Gold Light Sweep / Shimmer across the logo text */
+.welcome-logo::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(232, 201, 122, 0.2), transparent);
+  transform: skewX(-25deg);
+  animation: premiumGoldSweep 1.4s ease-in-out 0.6s infinite;
+}
+
+.welcome-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 3px;
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+  animation: taglineCinematicReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+/* Minimalist loading line accent bar */
+.welcome-progress-bar-wrap {
+  width: 140px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInPure 0.5s ease forwards 0.4s;
+}
+
+.welcome-progress-bar-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: translate3d(-100%, 0, 0);
+  /* Absolute timeline execution synchronization rule (2.1s to allow clean exit handshake) */
+  animation: progressFillRun 2.1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+
+/* DISMISSAL ANIMATION MODIFIERS */
+#luxury-welcome-shutter.shutter-dismissed {
+  opacity: 0;
+  transform: scale(1.04) translate3d(0, 0, 0); /* Elegant macro-lens scale pull back */
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CINEMATIC KEYFRAME PARSERS (GPU ACCELERATED ONLY)
+   ========================================================================== */
+@keyframes logoCinematicReveal {
+  from {
+    opacity: 0;
+    letter-spacing: 4px;
+    transform: scale(0.97) translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 12px;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes taglineCinematicReveal {
+  to {
+    opacity: 0.85;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes premiumGoldSweep {
+  0% { left: -150%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+@keyframes progressFillRun {
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeInPure {
+  to { opacity: 1; }
+}
+</style>
+<div id="luxury-welcome-shutter">
+  <div class="welcome-brand-container">
+    <h2 class="welcome-logo">GENZEST <span>AI</span></h2>
+    <p class="welcome-tagline" id="welcome-dynamic-tagline">Delhi's Premium Bridal Beauty Platform</p>
+    
+    <div class="welcome-progress-bar-wrap">
+      <div class="welcome-progress-bar-fill"></div>
+    </div>
+  </div>
+</div>
 <nav id="nav">
-  <a href="#" class="nav-logo">HEADLOCK AI</a>
-  <ul class="nav-links">
-    <li><a href="#planner">AI Planner</a></li>
-    <li><a href="#services">Bridal Services</a></li>
-    <li><a href="#menu">Luxury Tiers</a></li>
-    <li><a href="#team">Verified Artists</a></li>
-    <li><a href="#contact">Direct Booking</a></li>
-    <li><a href="#contact" class="nav-cta">Launch Concierge</a></li>
-  </ul>
+  <a href="#" class="nav-logo">GENZEST SALOON</a>
+  <div class="nav-container">
+    <ul class="nav-links" id="main-nav-links">
+      <div id="nav-slider"></div>
+      <li class="active"><a href="#hero-section">Home</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="home.html" class="nav-cta" style="text-decoration: none;">Explore Genzest</a>
+  </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero-section">
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
   <div class="hero-scissors">✨</div>
 
   <div class="hero-content">
     <div class="hero-badge">Delhi's Sovereign Bridal Beauty Network</div>
-    <h1 class="hero-title">DESIGNING THE<br><span>PREMIUM BRIDE</span></h1>
-    <p class="hero-sub">An AI-powered luxury marketplace pairing discerning Delhi brides with verified master makeup artists, high-end stylists, and personalized preparation schedules.</p>
+    <h1 class="hero-title">FIND DELHI'S BEST<br><span>BRIDAL BEAUTY PROS</span></h1>
+    <p class="hero-sub">Looking for trusted bridal makeup artists, mehendi experts, hairstylists, and beauty specialists in Delhi? Headlock AI helps brides discover verified professionals, compare services, explore portfolios, and book confidently.</p>
     <div class="hero-actions">
-      <a href="#planner" class="btn-primary">Generate Bridal Timeline</a>
-      <a href="#contact" class="btn-outline">Instant Expert Match</a>
+      <a href="home.html" class="btn-primary">Explore Genzest</a>
+      <a href="home.html#planner" class="btn-outline">Get AI Bridal Plan</a>
     </div>
   </div>
 
@@ -65,230 +295,173 @@
     <span class="ticker-item ticker-sep">✦</span>
     <span class="ticker-item">PRE-WEDDING WELLNESS SCHEDULING</span>
     <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">EXPERT MEHENDI DESIGN ARTISTRY</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">BRIDAL MAKEUP SELECTION</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">DELHI LUXURY SALON PARTNERS</span>
-    <span class="ticker-item ticker-sep">✦</span>
-    <span class="ticker-item">COUTURE HAIR ARCHITECTURE</span>
-    <span class="ticker-item ticker-sep">✦</span>
   </div>
 </div>
 
-<section class="about" id="planner">
-  <div>
-    <div class="section-label reveal">AI Operational Planner</div>
-    <h2 class="about-heading">Calculate Your <em>Bridal Timeline</em> & Allocation.</h2>
-    <p class="about-text">
-      Skip standard beauty stress. Input your unique profile down below to activate our hyper-localized allocation matrix, deploying direct milestones from South Delhi salons straight to your digital dashboard.
-    </p>
-    
-    <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
-      <div class="form-row">
-        <input id="plan-date" type="date" class="form-input" value="2026-10-15">
-        <input id="plan-budget" type="number" class="form-input" placeholder="Total Beauty Budget (₹)">
-      </div>
-      <div class="form-row">
-        <select id="plan-skin" class="form-input">
-          <option value="Dry">Dry / Sensitive Skin</option>
-          <option value="Oily">Oily / Acne Prone</option>
-          <option value="Combination" selected>Combination Skin</option>
-        </select>
-        <select id="plan-region" class="form-input">
-          <option value="Lajpat Nagar">Lajpat Nagar Node</option>
-          <option value="South Delhi">South Delhi Elite Hub</option>
-          <option value="Dwarka">Dwarka Node</option>
-          <option value="Saket">Saket Hub</option>
-          <option value="Rajouri Garden">Rajouri Garden Wing</option>
-        </select>
-      </div>
-      <button class="btn-primary" onclick="generateEngineData()">Compute Operational Strategy</button>
-    </div>
-  </div>
-
-  <div>
-    <div class="section-label reveal">Active Journey Tracking Node</div>
-    <div class="dashboard-card" id="dashboard-output">
-      <div class="dash-row">
-        <span style="font-family: 'Bebas Neue'; font-size: 24px; letter-spacing: 1px;" id="days-countdown">Wedding In -- Days</span>
-        <span class="status-tag">Initialized</span>
-      </div>
-      <div class="dash-row">
-        <div>
-          <div style="font-size: 14px; color: var(--white);">Derma / Skin Baseline Clean-Up</div>
-          <div style="font-size: 11px; color: var(--muted);">Assigned to Preferred Local Hub</div>
-        </div>
-        <span class="status-tag complete">✔ Completed</span>
-      </div>
-      <div class="dash-row">
-        <div>
-          <div style="font-size: 14px; color: var(--white);">Bridal Makeup Architecture Trial</div>
-          <div style="font-size: 11px; color: var(--muted);" id="assigned-region">Node: Lajpat Nagar Market</div>
-        </div>
-        <span class="status-tag">✦ Scheduled</span>
-      </div>
-      <div class="dash-row">
-        <div>
-          <div style="font-size: 14px; color: var(--white);">Couture Mehendi High Art Session</div>
-          <div style="font-size: 11px; color: var(--muted);">Premium Artist Network Deployment</div>
-        </div>
-        <span class="status-tag">Pending</span>
-      </div>
-
-      <div id="budget-split-zone" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border); display:none;">
-        <div style="font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;">AI Capital Distribution Matrix</div>
-        <div id="budget-breakdown-render" style="font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 6px;"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="services" id="services">
+<section class="services" id="why-us">
   <div class="services-header">
     <div>
-      <div class="section-label reveal">Curated Competencies</div>
-      <h2 class="services-title reveal reveal-delay-1">Strategic categories engineered for premium weddings.</h2>
+      <div class="section-label reveal">Platform Philosophy</div>
+      <h2 class="services-title reveal reveal-delay-1">Why Discerning Brides Choose Headlock AI.</h2>
     </div>
-    <a href="#menu" class="btn-outline reveal reveal-delay-2">View Detailed Tiers</a>
   </div>
-
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="service-num">01</div>
-      <span class="service-icon">💄</span>
-      <h3 class="service-name">Bridal Makeup Artisans</h3>
-      <p class="service-desc">Global HD Makeup, Airbrush execution, and traditional architectural contours utilizing certified luxury product arrays.</p>
-      <div class="service-price">Tier Baseline From ₹15,000</div>
+      <span class="service-icon">👑</span>
+      <h3 class="service-name">Verified Beauty Professionals</h3>
+      <p class="service-desc">Every makeup architect, illustrator, and hair designer passes extensive quality and execution alignment tests.</p>
     </div>
     <div class="service-card reveal reveal-delay-1">
       <div class="service-num">02</div>
-      <span class="service-icon">🌿</span>
-      <h3 class="service-name">Elite Mehendi Illustrators</h3>
-      <p class="service-desc">High-density intricate organic henna installations, matching contemporary concepts with classic patterns.</p>
-      <div class="service-price">Tier Baseline From ₹5,000</div>
+      <span class="service-icon">📊</span>
+      <h3 class="service-name">AI-Powered Bridal Planning</h3>
+      <p class="service-desc">Hyper-personalized cosmetic schedules, derma care intervals, and dynamic capital budget allocations generated instantly.</p>
     </div>
     <div class="service-card reveal reveal-delay-2">
       <div class="service-num">03</div>
-      <span class="service-icon">💆</span>
-      <h3 class="service-name">Pre-Wedding Skin Engineering</h3>
-      <p class="service-desc">Salicylic deep pore cleansing, micro-peel activation, and high-hydration moisture lock regimens.</p>
-      <div class="service-price">Tier Baseline From ₹7,500</div>
+      <span class="service-icon">✨</span>
+      <h3 class="service-name">Transparent Pricing</h3>
+      <p class="service-desc">No hidden platform markups or surprise fees. Clear tier architectures baseline parameters out in the open.</p>
     </div>
-  </div>
-
-  <div class="comparison-row">
-    <div class="comp-card">
-      <h4 style="font-family:'Cormorant Garamond'; font-size: 24px; color: var(--white);">Vanguard Silver Tier</h4>
-      <p style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 28px; margin: 15px 0;">Individual Deployment</p>
-      <p style="font-size:13px; color: var(--muted);">Includes Standard HD Wedding Day Makeup, Basic Hair styling, and Central Market Hub Access.</p>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <span class="service-icon">⭐️</span>
+      <h3 class="service-name">Trusted Reviews</h3>
+      <p class="service-desc">Immutable ledger accounts from real Delhi brides ensuring completely objective evaluation channels.</p>
     </div>
-    <div class="comp-card featured">
-      <h4 style="font-family:'Cormorant Garamond'; font-size: 24px; color: var(--gold-light);">Imperial Gold Tier</h4>
-      <p style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 28px; margin: 15px 0;">Complete Synergy Package</p>
-      <p style="font-size:13px; color: var(--cream);">Airbrush Master Formulation, Couture Trial Access, Customized Hair Design, and Dedicated Assistant deployment.</p>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">05</div>
+      <span class="service-icon">📅</span>
+      <h3 class="service-name">Direct Booking Experience</h3>
+      <p class="service-desc">Instant confirmation sync routing parameters out to the WhatsApp luxury concierge desk in one action click.</p>
     </div>
-    <div class="comp-card">
-      <h4 style="font-family:'Cormorant Garamond'; font-size: 24px; color: var(--white);">Royal Platinum Guild</h4>
-      <p style="color: var(--gold); font-family: 'Bebas Neue'; font-size: 28px; margin: 15px 0;">Elite VIP On-Site Core</p>
-      <p style="font-size:13px; color: var(--muted);">Master Director Match, Comprehensive Pre-Wedding Derma cycles, Premium Mehendi, and Unlimited Day-Of adjustments.</p>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">06</div>
+      <span class="service-icon">💄</span>
+      <h3 class="service-name">Luxury Bridal Experience</h3>
+      <p class="service-desc">A highly curated service designed entirely for premium wedding aesthetics across the NCR infrastructure.</p>
     </div>
   </div>
 </section>
 
-<section class="menu" id="menu">
-  <div class="section-label reveal">Granular Architecture Tiers</div>
-  <h2 class="menu-title reveal reveal-delay-1">Fully transparent rate parameters,<br>no supplemental platform adjustments.</h2>
-
-  <div class="menu-tabs reveal reveal-delay-2">
-    <button class="menu-tab active" onclick="switchTab('makeup')">Bridal Makeup</button>
-    <button class="menu-tab" onclick="switchTab('mehendi')">Mehendi Specialists</button>
-    <button class="menu-tab" onclick="switchTab('derma')">Pre-Wedding Derma Care</button>
-    <button class="menu-tab" onclick="switchTab('hairnail')">Couture Hair & Nails</button>
+<section class="about" id="how-it-works">
+  <div>
+    <div class="section-label reveal">Strategic Deployment</div>
+    <h2 class="about-heading">How It <em>Works</em></h2>
+    <p class="about-text">Explore how our platform orchestrates your high-end bridal configuration cleanly from initial alignment model strategies to day-of deployment execution nodes.</p>
+    <a href="home.html" class="btn-primary" style="margin-top:30px; display:inline-block;">Launch App Console</a>
   </div>
-
-  <div class="menu-list active" id="tab-makeup">
-    <div class="menu-row"><span class="menu-row-name">Signature High-Definition Bridal Makeup</span><span class="menu-row-dots"></span><span class="menu-row-price">₹15,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Premium Silicon Airbrush Structural Formulation</span><span class="menu-row-dots"></span><span class="menu-row-price">₹22,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Master Artist Luxury Engagement Tier</span><span class="menu-row-dots"></span><span class="menu-row-price">₹35,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Supplemental Bridesmaid Synergy Package (Per Account)</span><span class="menu-row-dots"></span><span class="menu-row-price">₹5,000</span></div>
-  </div>
-
-  <div class="menu-list" id="tab-mehendi">
-    <div class="menu-row"><span class="menu-row-name">Classical Intricate Wrist-Length Henna</span><span class="menu-row-dots"></span><span class="menu-row-price">₹5,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Imperial Elbow-Length Marwari Custom Artistry</span><span class="menu-row-dots"></span><span class="menu-row-price">₹12,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Royal Bridal Theme Figurative Portraiture</span><span class="menu-row-dots"></span><span class="menu-row-price">₹18,000</span></div>
-  </div>
-
-  <div class="menu-list" id="tab-derma">
-    <div class="menu-row"><span class="menu-row-name">Advanced Cellular Radiance Treatment Cycle</span><span class="menu-row-dots"></span><span class="menu-row-price">₹6,500</span></div>
-    <div class="menu-row"><span class="menu-row-name">Salicylic Acid Sebum Regulation Treatment</span><span class="menu-row-dots"></span><span class="menu-row-price">₹4,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Hyaluronic Intense Moisture Matrix Session</span><span class="menu-row-dots"></span><span class="menu-row-price">₹7,500</span></div>
-  </div>
-
-  <div class="menu-list" id="tab-hairnail">
-    <div class="menu-row"><span class="menu-row-name">Structural Extension Integration & Placement</span><span class="menu-row-dots"></span><span class="menu-row-price">₹8,000</span></div>
-    <div class="menu-row"><span class="menu-row-name">Custom Gel Extensions & Intricate Nail Graphics</span><span class="menu-row-dots"></span><span class="menu-row-price">₹3,500</span></div>
-    <div class="menu-row"><span class="menu-row-name">Couture Hair Floral Setting Integration</span><span class="menu-row-dots"></span><span class="menu-row-price">₹4,500</span></div>
-  </div>
-</section>
-
-<section class="team" id="team">
-  <div class="section-label reveal">Verified Guild Operators</div>
-  <h2 class="team-title reveal reveal-delay-1">Elite portfolio leads assigned to active deployment nodes.</h2>
-  <div class="team-grid">
-    <div class="team-card reveal">
-      <div class="team-portrait">
-        <div class="team-portrait-bg p1"></div>
-        <span class="team-portrait-icon">💄</span>
+  <div>
+    <div class="timeline-container">
+      <div class="timeline-step reveal">
+        <div class="timeline-badge">01</div>
+        <div class="timeline-content">
+          <h4 class="timeline-title">Input Parameters</h4>
+          <p class="timeline-desc">Tell us your wedding date, beauty budget limitations, skin metrics, and targeted operational region nodes.</p>
+        </div>
       </div>
-      <div class="team-info">
-        <span class="verified-artist-tag">✔ Verified Master</span>
-        <div class="team-name">Rahul Sharma</div>
-        <div class="team-role">Senior Bridal Architect</div>
-        <div class="team-exp">South Delhi Wing · 480+ Brides Styled</div>
+      <div class="timeline-step reveal reveal-delay-1">
+        <div class="timeline-badge">02</div>
+        <div class="timeline-content">
+          <h4 class="timeline-title">AI Optimization</h4>
+          <p class="timeline-desc">Our integrated model recommends the best beauty configurations, package solutions, and timeline splits.</p>
+        </div>
       </div>
-    </div>
-    <div class="team-card reveal reveal-delay-1">
-      <div class="team-portrait">
-        <div class="team-portrait-bg p2"></div>
-        <span class="team-portrait-icon">✨</span>
+      <div class="timeline-step reveal reveal-delay-2">
+        <div class="timeline-badge">03</div>
+        <div class="timeline-content">
+          <h4 class="timeline-title">Explore Portfolios</h4>
+          <p class="timeline-desc">Browse through completely clear profiles of top-rated verified masters matching your input metrics closely.</p>
+        </div>
       </div>
-      <div class="team-info">
-        <span class="verified-artist-tag">✔ Verified Master</span>
-        <div class="team-name">Priya Kapoor</div>
-        <div class="team-role">High-End Airbrush Expert</div>
-        <div class="team-exp">Lajpat Nagar Node · 600+ Brides Styled</div>
+      <div class="timeline-step reveal">
+        <div class="timeline-badge">04</div>
+        <div class="timeline-content">
+          <h4 class="timeline-title">Secure Live Allocation</h4>
+          <p class="timeline-desc">Book your preferred artist securely and lock in specific event calendars directly within our system registry data storage.</p>
+        </div>
       </div>
-    </div>
-    <div class="team-card reveal reveal-delay-2">
-      <div class="team-portrait">
-        <div class="team-portrait-bg p3"></div>
-        <span class="team-portrait-icon">🌿</span>
-      </div>
-      <div class="team-info">
-        <span class="verified-artist-tag">✔ Verified Specialist</span>
-        <div class="team-name">Anjali Mehta</div>
-        <div class="team-role">Elite Henna Illustrator</div>
-        <div class="team-exp">Saket Hub · 310+ Designs Completed</div>
-      </div>
-    </div>
-    <div class="team-card reveal reveal-delay-3">
-      <div class="team-portrait">
-        <div class="team-portrait-bg p4"></div>
-        <span class="team-portrait-icon">💇</span>
-      </div>
-      <div class="team-info">
-        <span class="verified-artist-tag">✔ Verified Master</span>
-        <div class="team-name">Vikram Singh</div>
-        <div class="team-role">Couture Hair Architect</div>
-        <div class="team-exp">Dwarka Node · 420+ Concepts Tailored</div>
+      <div class="timeline-step reveal reveal-delay-1">
+        <div class="timeline-badge">05</div>
+        <div class="timeline-content">
+          <h4 class="timeline-title">Track Journey Milestones</h4>
+          <p class="timeline-desc">Follow automated checkpoints for hair treatments, derma baseline preparation, and design cycles leading up to your date.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="testimonials">
+<section class="menu" id="features">
+  <div class="section-label reveal">Granular Systems</div>
+  <h2 class="menu-title reveal reveal-delay-1">Engineered Feature Showcase Core.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🤖</span>
+      <h3 class="service-name">AI Bridal Planner</h3>
+      <p class="service-desc">Generates detailed skin treatment matrices and milestone counts based closely on remaining event windows.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">🏛️</span>
+      <h3 class="service-name">Artist Marketplace</h3>
+      <p class="service-desc">Transparent marketplace offering filters for verified tier baselines and regional active operational teams.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">✦</span>
+      <h3 class="service-name">Smart Recommendations</h3>
+      <p class="service-desc">Matching algorithms recommend specific master artists matching chosen budget profiles and regional proximity maps.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📈</span>
+      <h3 class="service-name">Booking Dashboard</h3>
+      <p class="service-desc">Live pipeline verification workflow tracking milestones across pending, confirmed, and completed state parameters.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">🔒</span>
+      <h3 class="service-name">Verified Reviews</h3>
+      <p class="service-desc">Authenticated historical validation records preserving complete feedback truth regarding past coordination.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">💼</span>
+      <h3 class="service-name">Admin Management</h3>
+      <p class="service-desc">A full backoffice engine tracing pipeline metrics, status configurations, and absolute gross system assets cleanly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="gallery">
+  <div class="section-label reveal">Couture Showcase</div>
+  <h2 class="team-title reveal reveal-delay-1">Bridal Gallery Preview Node.</h2>
+  <div class="gallery-grid">
+    <div class="gallery-card reveal">
+      <div class="gallery-image-placeholder">💄</div>
+      <div class="gallery-meta">
+        <div class="team-name">The Greater Kailash Portfolio</div>
+        <div class="team-role">Airbrush High-Definition Finish</div>
+      </div>
+    </div>
+    <div class="gallery-card reveal reveal-delay-1">
+      <div class="gallery-image-placeholder">🌿</div>
+      <div class="gallery-meta">
+        <div class="team-name">The Vasant Kunj Showcase</div>
+        <div class="team-role">Intricate Marwari Portrait Henna</div>
+      </div>
+    </div>
+    <div class="gallery-card reveal reveal-delay-2">
+      <div class="gallery-image-placeholder">💇</div>
+      <div class="gallery-meta">
+        <div class="team-name">The Chanakyapuri Concept</div>
+        <div class="team-role">Couture Hair Architecture Styling</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="home.html" class="btn-outline">View Full GENZEST SALOON</a>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
   <div class="section-label reveal" style="justify-content:center;">Authentic Ledger Records</div>
   <h2 class="test-title reveal reveal-delay-1">"The absolute peak protocol for wedding preparation in Delhi."</h2>
   <div class="test-grid">
@@ -310,105 +483,36 @@
   </div>
 </section>
 
-<section class="booking" id="booking">
-  <h2 class="booking-title">RESERVE BRIDAL CORES</h2>
+<section class="booking">
+  <h2 class="booking-title">READY TO BUILD YOUR<br>PERFECT BRIDAL LOOK?</h2>
   <p class="booking-sub">Instantly activate our direct partner networks and secure your dates.</p>
-  <a href="#contact" class="booking-btn">Access Booking Portal</a>
-</section>
-
-<section class="contact" id="contact">
-  <div>
-    <div class="section-label reveal">Regional Hub Allocation</div>
-    <h2 class="contact-title reveal reveal-delay-1">Initiate Your<br>Bridal Allocation Request.</h2>
-
-    <div class="contact-item reveal reveal-delay-2">
-      <div class="contact-icon">📍</div>
-      <div>
-        <div class="contact-label">Delhi Central Core Network</div>
-        <div class="contact-val">Lajpat Nagar Central Architecture Hub,<br>New Delhi — 110024</div>
-      </div>
-    </div>
-
-    <div class="contact-item reveal reveal-delay-3">
-      <div class="contact-icon">🌐</div>
-      <div>
-        <div class="contact-label">Active Operating Nodes</div>
-        <div class="contact-val">South Delhi, Saket, Dwarka, Rajouri Garden</div>
-      </div>
-    </div>
-
-    <div class="hours-block reveal reveal-delay-4">
-      <div class="hours-title">Active Booking Summary</div>
-      <div id="booking-summary-box" class="summary-box">
-        <div style="font-size:12px; color:var(--muted);">No options selected. Modify the form to the right to dynamically generate the platform confirmation details.</div>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <div class="section-label reveal">Dynamic Intake Node</div>
-    <div class="contact-form reveal reveal-delay-1">
-      <div class="form-row">
-        <input class="form-input" type="text" id="user-name" placeholder="Bride's Name" oninput="syncSummary()">
-        <input class="form-input" type="tel" id="user-phone" placeholder="WhatsApp Contact Number" oninput="syncSummary()">
-      </div>
-      <input class="form-input" type="email" id="user-email" placeholder="Email Address Identification" oninput="syncSummary()">
-      
-      <div class="form-row">
-        <select class="form-input" id="user-service" onchange="syncSummary()">
-          <option value="" disabled selected>Select Core Focus</option>
-          <option value="Bridal Makeup Artistry">Bridal Makeup Artistry</option>
-          <option value="Elite Henna Demonstration">Elite Henna Demonstration</option>
-          <option value="Pre-Wedding Skin Engineering">Pre-Wedding Skin Engineering</option>
-          <option value="Complete Tier Synergy Package">Complete Tier Synergy Package</option>
-        </select>
-        <select class="form-input" id="user-expert" onchange="syncSummary()">
-          <option value="" disabled selected>Select Desired Artist</option>
-          <option value="Rahul Sharma (Senior Architect)">Rahul Sharma (Senior Architect)</option>
-          <option value="Priya Kapoor (Airbrush Lead)">Priya Kapoor (Airbrush Lead)</option>
-          <option value="Anjali Mehta (Henna Lead)">Anjali Mehta (Henna Lead)</option>
-          <option value="Vikram Singh (Hair Lead)">Vikram Singh (Hair Lead)</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <select class="form-input" id="user-package" onchange="syncSummary()">
-          <option value="" disabled selected>Select Luxury Package Tier</option>
-          <option value="Vanguard Silver Tier">Vanguard Silver Tier Base</option>
-          <option value="Imperial Gold Tier Suite">Imperial Gold Tier Suite</option>
-          <option value="Royal Platinum Guild Level">Royal Platinum Guild Level</option>
-        </select>
-        <input class="form-input" type="date" id="user-date" onchange="syncSummary()">
-      </div>
-
-      <textarea class="form-input" id="user-notes" placeholder="Specify any unique cultural aesthetic preferences or skin history parameters..." oninput="syncSummary()"></textarea>
-      <button class="form-submit" onclick="executeWhatsAppConcierge()">Submit Architecture Request & Export →</button>
-    </div>
+  <div style="display: flex; gap: 20px; justify-content: center; position: relative; z-index: 2;">
+    <a href="home.html" class="booking-btn">Explore Marketplace</a>
+    <a href="home.html#planner" class="booking-btn" style="background:transparent; border:1px solid var(--black); color:var(--black);">Start AI Planning</a>
   </div>
 </section>
 
 <footer>
   <div>
-    <div class="footer-logo">HEADLOCK AI</div>
+    <div class="footer-logo">Genzest AI</div>
     <div class="footer-tagline">Delhi's AI-Powered Bridal Beauty Booking Platform</div>
   </div>
   <ul class="footer-links">
-    <li><a href="#planner">AI Engine</a></li>
-    <li><a href="#services">Tiers</a></li>
-    <li><a href="#team">Verified Lead Guild</a></li>
-    <li><a href="#contact">Network Concierge</a></li>
+    <li><a href="#hero-section">Home</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="home.html">Saloon Portal</a></li>
   </ul>
-  <div class="footer-copy">© 2026 Headlock AI Protocol. Engineered for Hackathon Optimization. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Genzest AI Protocol. All rights reserved.</div>
 </footer>
 
 <script>
-  // SCROLL DECORATOR LOGIC
+  // Dynamic Scroll Activation Observer Logic
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // INTERSECTION OBSERVER PARSER
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -420,499 +524,86 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // DATA TAB SYSTEM SWITCHES
-  function switchTab(id) {
-    document.querySelectorAll('.menu-tab').forEach((tab) => {
-      tab.classList.remove('active');
+  // Sliding Nav Underline Component Mechanics
+  const navLinksContainer = document.getElementById('main-nav-links');
+  const navLinks = document.querySelectorAll('.nav-links li');
+  const slider = document.getElementById('nav-slider');
+  const sections = document.querySelectorAll('section');
+
+  function positionSlider(activeLi) {
+    if (!activeLi || window.innerWidth <= 768) {
+      slider.style.width = '0px';
+      return;
+    }
+    const rect = activeLi.getBoundingClientRect();
+    const containerRect = navLinksContainer.getBoundingClientRect();
+    slider.style.width = `${rect.width}px`;
+    slider.style.left = `${rect.left - containerRect.left}px`;
+  }
+
+  // Initial calculation positioning
+  const initialActive = document.querySelector('.nav-links li.active');
+  if (initialActive) setTimeout(() => positionSlider(initialActive), 200);
+
+  // Scroll Spy tracking function
+  window.addEventListener('scroll', () => {
+    let currentId = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (window.scrollY >= sectionTop) {
+        currentId = section.getAttribute('id');
+      }
     });
-    document.querySelectorAll('.menu-list').forEach(list => list.classList.remove('active'));
-    event.target.classList.add('active');
-    document.getElementById('tab-' + id).classList.add('active');
-  }
 
-  // ALIGN DATA & COUNTDOWN COMPILATION ENGINE
-  function generateEngineData() {
-    const weddingDateValue = document.getElementById('plan-date').value;
-    const budgetInput = document.getElementById('plan-budget').value;
-    const regionSelection = document.getElementById('plan-region').value;
-    
-    if (!weddingDateValue) {
-      alert("Please designate a planned wedding calendar date.");
-      return;
-    }
-
-    // Days Countdown Engine
-    const targetDate = new Date(weddingDateValue);
-    const modernToday = new Date("2026-05-31"); // Core System Matrix Synchronized Date
-    const absoluteDiff = targetDate - modernToday;
-    const totalCalculatedDays = Math.ceil(absoluteDiff / (1000 * 60 * 60 * 24));
-
-    if (totalCalculatedDays < 0) {
-      document.getElementById('days-countdown').innerText = "Event Active / Finalized";
-    } else {
-      document.getElementById('days-countdown').innerText = `Wedding In ${totalCalculatedDays} Days`;
-    }
-
-    document.getElementById('assigned-region').innerText = `Node Allocation: ${regionSelection}`;
-
-    // Capital Distribution Core Split Matrix
-    if (budgetInput && budgetInput > 0) {
-      const parsedCapital = parseFloat(budgetInput);
-      const makeupAllocation = (parsedCapital * 0.50).toFixed(0);
-      const skinAllocation = (parsedCapital * 0.20).toFixed(0);
-      const mehendiAllocation = (parsedCapital * 0.15).toFixed(0);
-      const hairAllocation = (parsedCapital * 0.10).toFixed(0);
-      const reserveAllocation = (parsedCapital * 0.05).toFixed(0);
-
-      const allocationHTML = `
-        <div style="display:flex; justify-content:space-between;"><span>Bridal Makeup Artistry (50%):</span><span style="color:var(--white);">₹${makeupAllocation}</span></div>
-        <div style="display:flex; justify-content:space-between;"><span>Skin Preparation & Engineering (20%):</span><span style="color:var(--white);">₹${skinAllocation}</span></div>
-        <div style="display:flex; justify-content:space-between;"><span>Organic Henna Artistry (15%):</span><span style="color:var(--white);">₹${mehendiAllocation}</span></div>
-        <div style="display:flex; justify-content:space-between;"><span>Hair Architecture Setting (10%):</span><span style="color:var(--white);">₹${hairAllocation}</span></div>
-        <div style="display:flex; justify-content:space-between;"><span>Logistical Safe Reserve (5%):</span><span style="color:var(--white);">₹${reserveAllocation}</span></div>
-      `;
-      document.getElementById('budget-breakdown-render').innerHTML = allocationHTML;
-      document.getElementById('budget-split-zone').style.display = 'block';
-    } else {
-      document.getElementById('budget-split-zone').style.display = 'none';
-    }
-  }
-
-  // INTERACTIVE STEP SUMMARY REFLECTION LOGIC
-  function syncSummary() {
-    const name = document.getElementById('user-name').value || "unspecified";
-    const service = document.getElementById('user-service').value || "unselected";
-    const expert = document.getElementById('user-expert').value || "unselected";
-    const tier = document.getElementById('user-package').value || "unselected";
-    const executionDate = document.getElementById('user-date').value || "undated";
-
-    const summaryBox = document.getElementById('booking-summary-box');
-    summaryBox.innerHTML = `
-      <div style="font-size: 13px; line-height: 1.6; color: var(--cream); display:flex; flex-direction:column; gap:6px;">
-        <div><strong>Bride Profile:</strong> ${name}</div>
-        <div><strong>Selected Focus:</strong> ${service}</div>
-        <div><strong>Assigned Guild Lead:</strong> ${expert}</div>
-        <div><strong>Selected Tier:</strong> ${tier}</div>
-        <div><strong>Target Date Matrix:</strong> ${executionDate}</div>
-      </div>
-    `;
-  }
-
-  // EXPORT ENGINE AND WHATSAPP STRING INTERPOLATION
-  function executeWhatsAppConcierge() {
-    const clientName = document.getElementById('user-name').value;
-    const clientPhone = document.getElementById('user-phone').value;
-    const primaryService = document.getElementById('user-service').value;
-    const designatedExpert = document.getElementById('user-expert').value;
-    const tierPackage = document.getElementById('user-package').value;
-    const timelineTarget = document.getElementById('user-date').value;
-
-    if (!clientName || !clientPhone || !primaryService || !designatedExpert || !tierPackage || !timelineTarget) {
-      alert("Operational parameters missing. Complete all dropdown steps to finish alignment.");
-      return;
-    }
-
-    // String Generation for WhatsApp Routing
-    const structuredString = `HEADLOCK+AI+BRIDAL+BOOKING%0A------------------------%0ABride+Name%3A+${encodeURIComponent(clientName)}%0AContact%3A+${encodeURIComponent(clientPhone)}%0ACore+Focus%3A+${encodeURIComponent(primaryService)}%0AGuild+Lead%3A+${encodeURIComponent(designatedExpert)}%0APackage+Level%3A+${encodeURIComponent(tierPackage)}%0ATarget+Date%3A+${encodeURIComponent(timelineTarget)}%0A------------------------%0APlatform+Status%3A+Pending+Verification`;
-    
-    // Dispatch to WhatsApp Web Protocol API
-    window.open(`https://api.whatsapp.com/send?phone=919899999999&text=${structuredString}`, '_blank');
-  }
-</script>
-<!-- SEARCH & FILTER SUB-HEADER INTERFACE (Injected naturally into team section without design mutation) -->
-<script>
-  // Dynamic CSS injector to add Search/Filter bar and Admin View gracefully within the current design system
-  const styleOverride = document.createElement('style');
-  styleOverride.innerHTML = `
-    .filter-bar { display: flex; gap: 15px; margin-bottom: 40px; width: 100%; flex-wrap: wrap; }
-    .filter-bar .form-input { max-width: 250px; }
-    .ai-rec-tag { background: linear-gradient(135deg, #c9a84c, #e8c97a); color: #0a0a0a; font-size: 9px; font-weight: 500; letter-spacing: 2px; padding: 4px 10px; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
-    .admin-anchor { position: fixed; bottom: 20px; left: 20px; z-index: 9999; background: var(--dark); border: 1px solid var(--gold); padding: 10px 20px; font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; color: var(--gold); text-decoration: none; cursor: pointer; transition: all 0.3s; }
-    .admin-anchor:hover { background: var(--gold); color: var(--black); }
-    .admin-modal { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.98); z-index: 10000; padding: 60px; overflow-y: auto; box-sizing: border-box; }
-    .admin-close { position: absolute; top: 30px; right: 60px; font-family: 'Bebas Neue'; font-size: 24px; color: var(--gold); cursor: pointer; letter-spacing: 2px; }
-    .admin-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
-    .admin-table th, .admin-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; }
-    .admin-table th { font-family: 'Bebas Neue'; font-size: 16px; letter-spacing: 2px; color: var(--gold); }
-    .admin-btn { padding: 6px 12px; font-size: 10px; text-transform: uppercase; font-family: 'DM Sans'; cursor: pointer; background: transparent; border: 1px solid var(--gold); color: var(--gold); }
-    .admin-btn.approve { background: var(--gold); color: var(--black); }
-  `;
-  document.head.appendChild(styleOverride);
-</script>
-
-<!-- Live Administrative Overlay Framework Container -->
-<div id="admin-panel" class="admin-modal">
-  <span class="admin-close" onclick="toggleAdminPanel(false)">✕ Close Matrix</span>
-  <div class="section-label">System Control Core</div>
-  <h2 class="about-heading" style="margin-bottom: 30px;">Operational <em>Bookings Administration Ledger</em></h2>
-  
-  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px; margin-bottom: 40px;">
-    <div class="dashboard-card" style="margin:0;"><div style="color:var(--gold); font-family:'Bebas Neue'; font-size:24px;" id="stat-total">₹0</div><div style="font-size:11px; text-transform:uppercase; color:var(--muted);">Gross Pipeline Capital</div></div>
-    <div id="analytics-node-1" class="dashboard-card" style="margin:0;"><div style="color:var(--white); font-family:'Bebas Neue'; font-size:24px;" id="stat-count">0</div><div style="font-size:11px; text-transform:uppercase; color:var(--muted);">Total System Intakes</div></div>
-    <div class="dashboard-card" style="margin:0;"><div style="color:#4caf50; font-family:'Bebas Neue'; font-size:24px;" id="stat-confirmed">0</div><div style="font-size:11px; text-transform:uppercase; color:var(--muted);">Confirmed Activations</div></div>
-    <div class="dashboard-card" style="margin:0;"><div style="color:var(--muted); font-family:'Bebas Neue'; font-size:24px;" id="stat-pending">0</div><div style="font-size:11px; text-transform:uppercase; color:var(--muted);">Awaiting Allocation</div></div>
-  </div>
-
-  <table class="admin-table">
-    <thead>
-      <tr>
-        <th>Bride Name</th>
-        <th>Focus Service</th>
-        <th>Assigned Artist</th>
-        <th>Tier Package</th>
-        <th>Target Date</th>
-        <th>Status Parameter</th>
-        <th>Administrative Actions</th>
-      </tr>
-    </thead>
-    <tbody id="admin-bookings-rows"></tbody>
-  </table>
-</div>
-
-<a class="admin-anchor" onclick="toggleAdminPanel(true)">⚡ System Admin Node</a>
-
-<!-- REWIRING LOGIC FRAMEWORK -->
-<script>
-  // 1. GLOBAL VERIFIED DATA ARRAYS
-  const MEMORY_MARKETPLACE_DATABASE = [
-    { id: "rahul-sharma", name: "Rahul Sharma", role: "Senior Bridal Architect", specialization: "Bridal Makeup Artistry", region: "South Delhi", price: 15000, rating: "4.9★", count: "480+", classTag: "p1", icon: "💄" },
-    { id: "priya-kapoor", name: "Priya Kapoor", role: "High-End Airbrush Expert", specialization: "Complete Tier Synergy Package", region: "Lajpat Nagar", price: 22000, rating: "4.9★", count: "600+", classTag: "p2", icon: "✨" },
-    { id: "anjali-mehta", name: "Anjali Mehta", role: "Elite Henna Illustrator", specialization: "Elite Henna Demonstration", region: "Saket", price: 5000, rating: "4.8★", count: "310+", classTag: "p3", icon: "🌿" },
-    { id: "vikram-singh", name: "Vikram Singh", role: "Couture Hair Architect", specialization: "Pre-Wedding Skin Engineering", region: "Dwarka", price: 7500, rating: "4.9★", count: "420+", classTag: "p4", icon: "💇" }
-  ];
-
-  // Local storage state fallbacks to act as the primary structural node if Firebase configurations aren't injected live by judges
-  let SYSTEM_LIVE_BOOKINGS = JSON.parse(localStorage.getItem('headlock_bookings')) || [
-    { id: "demo-1", name: "Ridhima Malhotra", phone: "+919811122233", email: "ridhima@example.com", service: "Bridal Makeup Artistry", artist: "Rahul Sharma (Senior Architect)", package: "Imperial Gold Tier Suite", date: "2026-11-24", status: "Confirmed", budget: 65000 },
-    { id: "demo-2", name: "Meera Joshi", phone: "+919933445566", email: "meera.j@example.com", service: "Elite Henna Demonstration", artist: "Anjali Mehta (Henna Lead)", package: "Vanguard Silver Tier", date: "2026-10-12", status: "Pending", budget: 20000 }
-  ];
-
-  // 2. BACKEND ENGINE INITIALIZATION & INITIAL RENDER PIPELINES
-  document.addEventListener("DOMContentLoaded", () => {
-    initializeDynamicDateFields();
-    renderMarketplaceMatrix();
-    syncSummary();
-    calculateSystemAnalytics();
-    
-    // Smooth scroll event listeners mapping preservation
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
+    navLinks.forEach(li => {
+      li.classList.remove('active');
+      const targetHref = li.querySelector('a').getAttribute('href');
+      if (targetHref === `#${currentId}`) {
+        li.classList.add('active');
+        positionSlider(li);
+      }
     });
   });
 
-  function initializeDynamicDateFields() {
-    const todayString = new Date().toISOString().split('T')[0];
-    const userDateInput = document.getElementById('user-date');
-    if(userDateInput) {
-      userDateInput.value = todayString;
-      userDateInput.min = todayString;
-    }
-  }
+  // Handle window resizing cleanly
+  window.addEventListener('resize', () => {
+    const activeLi = document.querySelector('.nav-links li.active');
+    positionSlider(activeLi);
+  });
+</script>
+<script>
+  (function() {
+  // Execute immediately upon DOM mounting to prioritize layout isolation
+  document.addEventListener("DOMContentLoaded", () => {
+    const welcomeShutter = document.getElementById('luxury-welcome-shutter');
+    const welcomeTagline = document.getElementById('welcome-dynamic-tagline');
 
-  // 3. SECURE INTERACTIVE SEARCH & ENGINE FILTERS
-  function renderMarketplaceMatrix(filterText = "", budgetMax = Infinity, locationScope = "all") {
-    const teamGrid = document.querySelector('.team-grid');
-    if (!teamGrid) return;
-
-    // Inject Search/Filter Sub-Panel directly below title if not already rendered
-    if (!document.getElementById('marketplace-filter-container')) {
-      const filterWrapper = document.createElement('div');
-      filterWrapper.id = 'marketplace-filter-container';
-      filterWrapper.className = 'filter-bar reveal visible';
-      filterWrapper.innerHTML = `
-        <input type="text" id="search-artist" class="form-input" placeholder="Search Master Guild..." oninput="triggerMarketSearch()">
-        <input type="number" id="filter-budget" class="form-input" placeholder="Maximum Price (₹)..." oninput="triggerMarketSearch()">
-        <select id="filter-location" class="form-input" onchange="triggerMarketSearch()">
-          <option value="all">All Operating Nodes</option>
-          <option value="South Delhi">South Delhi</option>
-          <option value="Lajpat Nagar">Lajpat Nagar</option>
-          <option value="Saket">Saket</option>
-          <option value="Dwarka">Dwarka</option>
-        </select>
-      `;
-      teamGrid.parentNode.insertBefore(filterWrapper, teamGrid);
-    }
-
-    // Dynamic Execution Logic Matching
-    let htmlOutput = "";
-    
-    // Evaluate operational data bindings to match user parameters from the main planner
-    const activePlannerBudget = parseFloat(document.getElementById('plan-budget').value) || Infinity;
-    const activePlannerRegion = document.getElementById('plan-region').value;
-
-    MEMORY_MARKETPLACE_DATABASE.forEach(artist => {
-      const matchesSearch = artist.name.toLowerCase().includes(filterText.toLowerCase()) || artist.role.toLowerCase().includes(filterText.toLowerCase());
-      const matchesBudget = artist.price <= budgetMax;
-      const matchesLocation = locationScope === "all" || artist.region.toLowerCase().includes(locationScope.toLowerCase());
-
-      if (matchesSearch && matchesBudget && matchesLocation) {
-        // Evaluate AI Recommendation Weights based on planner data inputs
-        let isAiRecommended = false;
-        if (activePlannerRegion && activePlannerRegion.includes(artist.region)) {
-          isAiRecommended = true;
-        } else if (activePlannerBudget !== Infinity && artist.price <= (activePlannerBudget * 0.5)) {
-          isAiRecommended = true;
+    if (welcomeShutter) {
+      // 1. Luxury Text Transition Handshake halfway through lifecycle
+      setTimeout(() => {
+        if (welcomeTagline) {
+          welcomeTagline.style.opacity = '0';
+          // Smooth swap tracking string parameters with an elegant hardware blend
+          setTimeout(() => {
+            welcomeTagline.innerText = "Crafting Beautiful Bridal Journeys";
+            welcomeTagline.style.opacity = '0.85';
+          }, 200);
         }
+      }, 1300);
 
-        htmlOutput += `
-          <div class="team-card reveal visible">
-            <div class="team-portrait">
-              <div class="team-portrait-bg ${artist.classTag}"></div>
-              <span class="team-portrait-icon">${artist.icon}</span>
-            </div>
-            <div class="team-info">
-              ${isAiRecommended ? `<div class="ai-rec-tag">✦ AI Recommended Artist</div>` : ''}
-              <span class="verified-artist-tag">✔ Verified Master</span>
-              <div class="team-name">${artist.name}</div>
-              <div class="team-role">${artist.role}</div>
-              <div class="team-exp">${artist.region} Node · ${artist.count} Brides Styled</div>
-              <div style="font-family:'Bebas Neue'; color:var(--gold); font-size:16px; margin-top:6px;">Baseline Matrix: ₹${artist.price.toLocaleString('en-IN')}</div>
-            </div>
-          </div>
-        `;
-      }
-    });
-
-    teamGrid.innerHTML = htmlOutput || `<div style="grid-column: 1/-1; color: var(--muted); text-align: center; padding: 40px 0;">No master guild profiles align with your chosen criteria metrics.</div>`;
-  }
-
-  function triggerMarketSearch() {
-    const text = document.getElementById('search-artist').value;
-    const maxBudget = parseFloat(document.getElementById('filter-budget').value) || Infinity;
-    const location = document.getElementById('filter-location').value;
-    renderMarketplaceMatrix(text, maxBudget, location);
-  }
-
-  // 4. INTEGRATED GENIMAI CORE TIMELINE ALIGNMENT PROTOCOL
-  async function generateEngineData() {
-    const weddingDateValue = document.getElementById('plan-date').value;
-    const budgetInput = document.getElementById('plan-budget').value;
-    const regionSelection = document.getElementById('plan-region').value;
-    const skinSelection = document.getElementById('plan-skin').value;
-    
-    if (!weddingDateValue) {
-      alert("Please designate a planned wedding calendar date parameter.");
-      return;
+      // 2. Automated absolute shutter destruction callback exactly at 2.5 seconds
+      setTimeout(() => {
+        welcomeShutter.classList.add('shutter-dismissed');
+        
+        // Wipe node completely from browser operational layout structures once animation clears
+        setTimeout(() => {
+          welcomeShutter.remove();
+        }, 700);
+        
+      }, 2500);
     }
-
-    const computeButton = document.querySelector("button[onclick='generateEngineData()']");
-    const originalText = computeButton.innerText;
-    computeButton.innerText = "Processing Analytical Models...";
-    computeButton.disabled = true;
-    computeButton.style.opacity = "0.6";
-
-    try {
-      const targetDate = new Date(weddingDateValue);
-      const modernToday = new Date(); 
-      const absoluteDiff = targetDate - modernToday;
-      const totalCalculatedDays = Math.ceil(absoluteDiff / (1000 * 60 * 60 * 24));
-
-      if (totalCalculatedDays < 0) {
-        document.getElementById('days-countdown').innerText = "Event Core Active / Completed";
-      } else {
-        document.getElementById('days-countdown').innerText = `Wedding In ${totalCalculatedDays} Days`;
-      }
-
-      document.getElementById('assigned-region').innerText = `Node Allocation: ${regionSelection}`;
-
-      // Live JSON Calculation Split Framework
-      if (budgetInput && budgetInput > 0) {
-        const parsedCapital = parseFloat(budgetInput);
-        const allocationHTML = `
-          <div style="display:flex; justify-content:space-between;"><span>Bridal Makeup Artistry (50%):</span><span style="color:var(--white);">₹${(parsedCapital * 0.5).toFixed(0)}</span></div>
-          <div style="display:flex; justify-content:space-between;"><span>Skin Preparation & Engineering (20%):</span><span style="color:var(--white);">₹${(parsedCapital * 0.2).toFixed(0)}</span></div>
-          <div style="display:flex; justify-content:space-between;"><span>Organic Henna Artistry (15%):</span><span style="color:var(--white);">₹${(parsedCapital * 0.15).toFixed(0)}</span></div>
-          <div style="display:flex; justify-content:space-between;"><span>Hair Architecture Setting (10%):</span><span style="color:var(--white);">₹${(parsedCapital * 0.1).toFixed(0)}</span></div>
-          <div style="display:flex; justify-content:space-between;"><span>Logistical Safe Reserve (5%):</span><span style="color:var(--white);">₹${(parsedCapital * 0.05).toFixed(0)}</span></div>
-        `;
-        document.getElementById('budget-breakdown-render').innerHTML = allocationHTML;
-        document.getElementById('budget-split-zone').style.display = 'block';
-      }
-
-      // Re-render profiles to trigger real-time smart recommendation indicators across the cards
-      renderMarketplaceMatrix("", Infinity, "all");
-
-    } catch (error) {
-      console.error("AI Routing Error: ", error);
-    } finally {
-      computeButton.innerText = originalText;
-      computeButton.disabled = false;
-      computeButton.style.opacity = "1";
-    }
-  }
-
-  // 5. LIVE BOOKING ARCHITECTURE & FIREBASE DATABASING EMULATION
-  function syncSummary() {
-    const name = document.getElementById('user-name').value || "Unspecified Profile";
-    const service = document.getElementById('user-service').value || "None Selected";
-    const expert = document.getElementById('user-expert').value || "None Assigned";
-    const tier = document.getElementById('user-package').value || "None Selected";
-    const executionDate = document.getElementById('user-date').value || "Undated Timeline";
-
-    const summaryBox = document.getElementById('booking-summary-box');
-    if (summaryBox) {
-      summaryBox.innerHTML = `
-        <div style="font-size: 13px; line-height: 1.6; color: var(--cream); display:flex; flex-direction:column; gap:6px;">
-          <div><strong>Bride Profile Matrix:</strong> ${name}</div>
-          <div><strong>Selected Core Focus:</strong> ${service}</div>
-          <div><strong>Assigned Guild Lead:</strong> ${expert}</div>
-          <div><strong>Selected Tier Parameter:</strong> ${tier}</div>
-          <div><strong>Target Date Matrix:</strong> ${executionDate}</div>
-          <div style="margin-top:5px; padding-top:5px; border-top:1px dashed rgba(255,255,255,0.1);">
-            <span class="status-tag">Status Initialization: Pending Verification</span>
-          </div>
-        </div>
-      `;
-    }
-  }
-
-  async function executeWhatsAppConcierge() {
-    const clientName = document.getElementById('user-name').value.trim();
-    const clientPhone = document.getElementById('user-phone').value.trim();
-    const clientEmail = document.getElementById('user-email').value.trim();
-    const primaryService = document.getElementById('user-service').value;
-    const designatedExpert = document.getElementById('user-expert').value;
-    const tierPackage = document.getElementById('user-package').value;
-    const timelineTarget = document.getElementById('user-date').value;
-    const userNotes = document.getElementById('user-notes').value.trim();
-
-    // Comprehensive Native Form Field Validation Engine
-    if (!clientName || !clientPhone || !clientEmail || !primaryService || !designatedExpert || !tierPackage || !timelineTarget) {
-      alert("Validation Error: All tracking operational fields must be populated completely.");
-      return;
-    }
-
-    const emailExpression = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailExpression.test(clientEmail)) {
-      alert("Validation Error: Please enter a correct structural email identifier layout.");
-      return;
-    }
-
-    const submitBtn = document.querySelector(".form-submit");
-    submitBtn.innerText = "Securing Registry Nodes...";
-    submitBtn.disabled = true;
-
-    // Package Price Matcher Engine
-    let baseCalculatedPrice = 25000;
-    if (tierPackage.includes("Silver")) baseCalculatedPrice = 15000;
-    if (tierPackage.includes("Gold")) baseCalculatedPrice = 22000;
-    if (tierPackage.includes("Platinum")) baseCalculatedPrice = 35000;
-
-    const databasePayload = {
-      id: "booking_" + Date.now(),
-      name: clientName,
-      phone: clientPhone,
-      email: clientEmail,
-      service: primaryService,
-      artist: designatedExpert,
-      package: tierPackage,
-      date: timelineTarget,
-      notes: userNotes,
-      status: "Pending",
-      budget: baseCalculatedPrice
-    };
-
-    try {
-      // Firebase Write Routing Configuration Emulation Node
-      // In production development environments, replace with actual direct reference: 
-      // await firebase.database().ref('bookings/' + databasePayload.id).set(databasePayload);
-      
-      SYSTEM_LIVE_BOOKINGS.push(databasePayload);
-      localStorage.setItem('headlock_bookings', JSON.stringify(SYSTEM_LIVE_BOOKINGS));
-      
-      calculateSystemAnalytics();
-
-      // Complete WhatsApp Protocol Execution Handshake
-      const structuredString = `HEADLOCK+AI+BRIDAL+BOOKING%0A------------------------%0ABride+Name%3A+${encodeURIComponent(clientName)}%0AContact%3A+${encodeURIComponent(clientPhone)}%0ACore+Focus%3A+${encodeURIComponent(primaryService)}%0AGuild+Lead%3A+${encodeURIComponent(designatedExpert)}%0APackage+Level%3A+${encodeURIComponent(tierPackage)}%0ATarget+Date%3A+${encodeURIComponent(timelineTarget)}%0A------------------------%0APlatform+Status%3A+Pending+Verification`;
-      
-      window.open(`https://api.whatsapp.com/send?phone=919899999999&text=${structuredString}`, '_blank');
-      
-      alert("System Registry Confirmed! Redirecting to verified concierge network desk.");
-      
-    } catch (systemFailure) {
-      console.error("System Matrix Exception: ", systemFailure);
-      alert("An issue occurred committing data to registry pipeline channels.");
-    } finally {
-      submitBtn.innerHTML = "Submit Architecture Request & Export →";
-      submitBtn.disabled = false;
-    }
-  }
-
-  // 6. BACKOFFICE REAL-TIME ADMINISTRATIVE HUB & LEDGER CONTROLS
-  function toggleAdminPanel(displayState) {
-    const adminElement = document.getElementById('admin-panel');
-    if (adminElement) {
-      adminElement.style.display = displayState ? 'block' : 'none';
-      if(displayState) renderAdminLedgerTable();
-    }
-  }
-
-  function calculateSystemAnalytics() {
-    let totalRevenuePipeline = 0;
-    let pendingAllocations = 0;
-    let activeConfirmations = 0;
-
-    SYSTEM_LIVE_BOOKINGS.forEach(item => {
-      totalRevenuePipeline += item.budget || 0;
-      if (item.status === "Pending") pendingAllocations++;
-      if (item.status === "Confirmed" || item.status === "Completed") activeConfirmations++;
-    });
-
-    document.getElementById('stat-total').innerText = "₹" + totalRevenuePipeline.toLocaleString('en-IN');
-    document.getElementById('stat-count').innerText = SYSTEM_LIVE_BOOKINGS.length;
-    document.getElementById('stat-confirmed').innerText = activeConfirmations;
-    document.getElementById('stat-pending').innerText = pendingAllocations;
-  }
-
-  function renderAdminLedgerTable() {
-    const containerRows = document.getElementById('admin-bookings-rows');
-    if (!containerRows) return;
-
-    let rowsHtml = "";
-    SYSTEM_LIVE_BOOKINGS.forEach(record => {
-      rowsHtml += `
-        <tr>
-          <td><strong>${record.name}</strong><br><span style="color:var(--muted); font-size:11px;">${record.phone}</span></td>
-          <td>${record.service}</td>
-          <td>${record.artist}</td>
-          <td>${record.package}</td>
-          <td>${record.date}</td>
-          <td>
-            <span class="status-tag ${record.status.toLowerCase() === 'confirmed' || record.status.toLowerCase() === 'completed' ? 'complete' : ''}">
-              ${record.status}
-            </span>
-          </td>
-          <td>
-            ${record.status === 'Pending' ? `<button class="admin-btn approve" onclick="modifyBookingStatus('${record.id}', 'Confirmed')">Approve</button>` : ''}
-            ${record.status === 'Confirmed' ? `<button class="admin-btn" onclick="modifyBookingStatus('${record.id}', 'Completed')">Complete</button>` : ''}
-            <button class="admin-btn" style="border-color:#f44336; color:#f44336; margin-left:5px;" onclick="removeBookingNode('${record.id}')">Drop</button>
-          </td>
-        </tr>
-      `;
-    });
-
-    containerRows.innerHTML = rowsHtml || `<tr><td colspan="7" style="color:var(--muted); text-align:center; padding:30px;">No operational schedules are currently logged in system indexes.</td></tr>`;
-  }
-
-  function modifyBookingStatus(id, adjustedStatus) {
-    const matchingRecord = SYSTEM_LIVE_BOOKINGS.find(x => x.id === id);
-    if (matchingRecord) {
-      matchingRecord.status = adjustedStatus;
-      localStorage.setItem('headlock_bookings', JSON.stringify(SYSTEM_LIVE_BOOKINGS));
-      calculateSystemAnalytics();
-      renderAdminLedgerTable();
-    }
-  }
-
-  function removeBookingNode(id) {
-    if(confirm("Confirm removal of booking layer from active ledger memory slots?")) {
-      SYSTEM_LIVE_BOOKINGS = SYSTEM_LIVE_BOOKINGS.filter(x => x.id !== id);
-      localStorage.setItem('headlock_bookings', JSON.stringify(SYSTEM_LIVE_BOOKINGS));
-      calculateSystemAnalytics();
-      renderAdminLedgerTable();
-    }
-  }
+  });
+})();
 </script>
 </body>
 </html>
