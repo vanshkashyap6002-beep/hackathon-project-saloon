@@ -328,7 +328,7 @@ https://github.com/vanshkashyap6002-beep/hackathon-project-saloon
 
 ## Demo Video
 
-https://drive.google.com/file/d/1EaMVJptBFIFpe_NQjwLGc4eF9xrcjFeV/view?usp=drivesdk
+https://drive.google.com/file/d/1uhKwKaG388jlF0bDbQZPUNVf7oia5KKl/view?usp=drivesdk
 
 ---
 
